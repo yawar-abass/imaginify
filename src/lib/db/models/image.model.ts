@@ -18,7 +18,7 @@ export interface IImage extends Document {
   updatedAt?: Date;
 }
 
-const ImageSchema = new Schema({
+const ImageSchema = new Schema<IImage>({
   title: { type: String, required: true },
   transformationType: { type: String, required: true },
   publicId: { type: String, required: true },
