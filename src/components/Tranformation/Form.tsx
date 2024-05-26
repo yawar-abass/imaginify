@@ -23,6 +23,7 @@ import {
 import { AspectRatioKey, debounce, deepMergeObjects } from "@/lib/utils";
 import { updateCredits } from "@/lib/actions/user.actions";
 import MediaUploader from "./MediaUploader";
+import TransformedImage from "./TransformedImage";
 
 export const formSchema = z.object({
   title: z.string(),
@@ -216,6 +217,14 @@ const TransformationForm = ({
                   type={type}
                 />
               )}
+            />
+            <TransformedImage
+              image={image}
+              transformationConfig={transformationConfig}
+              type={type}
+              title={form.getValues().title}
+              isTransforming={isTransforming}
+              setIsTransforming={setIsTransforming}
             />
           </div>
 
