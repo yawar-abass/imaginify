@@ -111,7 +111,7 @@ const TransformationForm = ({
     );
     setNewTransformation(null);
     startTransition(async () => {
-      // await updateCredits(userId, creditBalance + transformationType.creditFee);
+      await updateCredits(userId, -1);
     });
   };
 
