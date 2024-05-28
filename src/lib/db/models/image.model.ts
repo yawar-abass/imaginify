@@ -1,5 +1,4 @@
-import { Schema, model, models } from "mongoose";
-import { ObjectId } from "mongoose";
+import { Document, Schema, model, models } from "mongoose";
 
 export interface IImage extends Document {
   title: string;
@@ -8,17 +7,21 @@ export interface IImage extends Document {
   secureURL: string;
   width?: number;
   height?: number;
-  config?: Record<string, unknown>;
-  transformationUrl?: String;
+  config?: object;
+  transformationUrl?: string;
   aspectRatio?: string;
   color?: string;
   prompt?: string;
-  author?: { _id: ObjectId; firstName: string; lastName: string };
+  author: {
+    _id: string;
+    firstName: string;
+    lastName: string;
+  };
   createdAt?: Date;
   updatedAt?: Date;
 }
 
-const ImageSchema = new Schema<IImage>({
+const ImageSchema = new Schema({
   title: { type: String, required: true },
   transformationType: { type: String, required: true },
   publicId: { type: String, required: true },
