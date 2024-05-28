@@ -34,7 +34,11 @@ export async function checkoutCredits(transaction: CheckoutTransactionParams) {
     cancel_url: `${process.env.NEXT_PUBLIC_SERVER_URL}/`,
   });
 
-  redirect(session.url);
+  if (session.url) {
+    redirect(session.url);
+  } else {
+    throw new Error("Session URL is null");
+  }
 }
 
 export async function createTransaction(transaction: CreateTransactionParams) {
